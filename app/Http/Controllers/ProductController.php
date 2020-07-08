@@ -35,7 +35,7 @@ class ProductController extends Controller
     {
         return "Showing the form to edit the  {$product}";
     }
-    
+
     public  function  destroy($product)
     {
 
