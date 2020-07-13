@@ -1,31 +1,24 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+@extends('layout.master')
+
+@section('content')
     <h1>List of Products</h1>
     @empty($products)
         <div class="alert alert-warning">
             The List pf products is empty
         </div>
-  @else
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead class="thead-light">
+    @else
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-light">
                 <th>Id</th>
                 <th>Title</th>
                 <th>Description</th>
                 <th>Price</th>
                 <th>Stock</th>
                 <th>Status</th>
-            </thead>
+                </thead>
 
-            <tbody>
+                <tbody>
                 @foreach($products as $product)
                     <tr>
                         <td>{{ $product->id }}</td>
@@ -38,10 +31,11 @@
                     </tr>
                 @endforeach
 
-            </tbody>
+                </tbody>
 
-        </table>
-    </div>
+            </table>
+        </div>
     @endif
-</body>
-</html>
+@endsection
+
+
