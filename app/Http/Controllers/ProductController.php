@@ -12,7 +12,9 @@ class ProductController extends Controller
     {
         $products = Product::all();
 
-        return view('products.index');
+        return view('products.index')->with([
+            'products' => $products,
+        ]);
     }
 
     public  function  create()
