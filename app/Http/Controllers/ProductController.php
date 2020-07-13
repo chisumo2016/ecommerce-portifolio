@@ -24,7 +24,8 @@ class ProductController extends Controller
 
     public  function  store()
     {
-        dd('DONE');
+        $product = Product::create(request()->all());
+        return $product;
     }
 
     public  function show($product)
