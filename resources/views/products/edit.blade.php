@@ -5,7 +5,7 @@
     <form action="{{ route('products.update',['product' => $product->id]) }}" method="POST">
         @csrf
         @method('put')
-        
+
         <div class="form-row">
             <lable>Title</lable>
             <input  class="form-control"  name="title" type="text" value="{{ $product->title }}" required>
