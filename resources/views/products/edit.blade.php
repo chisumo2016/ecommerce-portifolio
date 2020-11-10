@@ -8,21 +8,21 @@
 
         <div class="form-row">
             <lable>Title</lable>
-            <input  class="form-control"  name="title" type="text" value="{{ $product->title }}" required>
+            <input  class="form-control"  name="title" type="text" value="{{ $product->title }}" >
         </div>
 
         <div class="form-row">
             <lable>Description</lable>
-            <input  class="form-control"  name="description" type="text"  value="{{ $product->description }}" required>
+            <input  class="form-control"  name="description" type="text"  value="{{ $product->description }}" >
         </div>
 
         <div class="form-row">
             <lable>Price</lable>
-            <input  class="form-control"  name="price" type="number"  min="1.00" step="0.01" value="{{ $product->price }}"  required>
+            <input  class="form-control"  name="price" type="number"  min="1.00" step="0.01" value="{{ $product->price }}"  >
         </div>
         <div class="form-row">
             <lable>Stock</lable>
-            <input  class="form-control"  name="stock" type="number"  min="0"  value="{{ $product->stock }}"  required>
+            <input  class="form-control"  name="stock" type="number"  min="0"  value="{{ $product->stock }}" >
         </div>
 
         <div class="form-row">

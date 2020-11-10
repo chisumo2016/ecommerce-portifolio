@@ -6,21 +6,21 @@
         @csrf
         <div class="form-row">
             <lable>Title</lable>
-            <input  class="form-control"  name="title" type="text" required>
+            <input  class="form-control"  name="title" type="text" >
         </div>
 
         <div class="form-row">
             <lable>Description</lable>
-            <input  class="form-control"  name="description" type="text" required>
+            <input  class="form-control"  name="description" type="text" >
         </div>
 
         <div class="form-row">
             <lable>Price</lable>
-            <input  class="form-control"  name="price" type="number"  min="1.00" step="0.01" required>
+            <input  class="form-control"  name="price" type="number"  min="1.00" step="0.01">
         </div>
         <div class="form-row">
             <lable>Stock</lable>
-            <input  class="form-control"  name="stock" type="number"  min="0" required>
+            <input  class="form-control"  name="stock" type="number"  min="0" >
         </div>
 
         <div class="form-row">
