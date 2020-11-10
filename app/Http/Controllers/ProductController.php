@@ -39,15 +39,18 @@ class ProductController extends Controller
         if (request()->stock == 0 && request()->status == 'available'){
             session()->flash('error', 'If available must have stock');
             //session()->put('error', 'If available must have stock');
-            return  redirect()->back()->withInput(request()->all());
+            //return  redirect()->back()->withInput(request()->all());
+            return  redirect()->back()->withInput(request()->all())
+                ->withErrors('If available must have stock');
         }
 
         //session()->forget('error');
         $product = Product::create(request()->all());
 
-        session()->flash('success',"New Product with id {$product->id} was created");
+        //session()->flash('success',"New Product with id {$product->id} was created");
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')
+                        ->withSuccess("New Product with id {$product->id} was created");
     }
 
     public  function show($product)
@@ -84,7 +87,8 @@ class ProductController extends Controller
         $product =Product::findOrFail($product);
         $product->update(request()->all());
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')
+                        ->withSuccess("The Product with id {$product->id} was updated");
 
         // redirect  redirect()->back();  redirect()->route('products.index'); redirect()->action('ProductController@index');
         //return $product;
@@ -96,7 +100,8 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')
+            ->withSuccess("The Product with id {$product->id} was removed");
 
     }
 }
