@@ -26,6 +26,14 @@ class ProductController extends Controller
     {
         $product = Product::create(request()->all());
 
+        if (request()->stock == 0 && request()->status == 'available'){
+            session()->flash('error', 'If available must have stock');
+            //session()->put('error', 'If available must have stock');
+            return  redirect()->back();
+        }
+
+        //session()->forget('error');
+
         return redirect()->route('products.index');
     }
 
@@ -64,7 +72,6 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('products.index');
-
 
     }
 }
