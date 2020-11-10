@@ -7,27 +7,27 @@
         @method('put')
 
         <div class="form-row">
-            <lable>Title</lable>
-            <input  class="form-control"  name="title" type="text" value="{{ $product->title }}" >
+            <label>Title</label>
+            <input  class="form-control"  name="title" type="text" value="{{ $product->title }}" required>
         </div>
 
         <div class="form-row">
-            <lable>Description</lable>
-            <input  class="form-control"  name="description" type="text"  value="{{ $product->description }}" >
+            <label>Description</label>
+            <input  class="form-control"  name="description" type="text"  value="{{ $product->description }}" required>
         </div>
 
         <div class="form-row">
-            <lable>Price</lable>
-            <input  class="form-control"  name="price" type="number"  min="1.00" step="0.01" value="{{ $product->price }}"  >
+            <label>Price</label>
+            <input  class="form-control"  name="price" type="number"  min="1.00" step="0.01" value="{{ $product->price }}"  required>
         </div>
         <div class="form-row">
-            <lable>Stock</lable>
-            <input  class="form-control"  name="stock" type="number"  min="0"  value="{{ $product->stock }}" >
+            <label>Stock</label>
+            <input  class="form-control"  name="stock" type="number"  min="0"  value="{{ $product->stock }}"  required>
         </div>
 
         <div class="form-row">
-            <lable>Status</lable>
-            <select class="custom-select" name="status" id="">
+            <label>Status</label>
+            <select class="custom-select" name="status" id="" required>
 {{--                <option value="" selected>Select......</option>--}}
                 <option value="available"   {{ $product->status == 'available' ?  'selected' : ''}}>Available</option>
                 <option value="unavailable" {{ $product->status == 'unavailable' ? 'selected' : ''}} >Unavailable</option>
