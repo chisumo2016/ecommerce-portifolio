@@ -40,7 +40,7 @@ class ProductController extends Controller
         if (request()->stock == 0 && request()->status == 'available'){
             session()->flash('error', 'If available must have stock');
             //session()->put('error', 'If available must have stock');
-            return  redirect()->back();
+            return  redirect()->back()->withInput(request()->all());
         }
 
         //session()->forget('error');
