@@ -1,0 +1,29 @@
+Factory : Random instance of factory, return the attributes
+- Read from github
+  php artisan make:factory ProductFactory --model=Product
+
+
+    php artisan tinker
+    factory(App\Product::class)->create();
+    factory(App\Product::class)->make();
+
+
+2: Table Seeder
+     -databaseSeeder
+        $products = factory(Product::class, 50)->create();
+
+
+
+QUERY BUILDER
+
+        //$product =DB::table('products')->where('id', $product)->get();
+        //$product =DB::table('products')->where('id', $product)->first();
+        $product =DB::table('products')->find($product);
+        dd($product);
+
+ORM
+   //$product =Product::where('id', $product)->get();
+   //$product =Product::where('id', $product)->first();
+    $product =Product::find($product);
+
+    dd(request, request->title, request->all());
