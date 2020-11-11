@@ -76,6 +76,12 @@ Resource Routes in Laravel
 
 
  Form Request  to validate Data
+   Form request  in a single class
+    php artisan make:request  ProductRequest
+    return true
+    withvalidator
+    $product = Product::create($request->all());   better way is -which validate the input
+    $product = Product::create($request->validate());
 
 
 

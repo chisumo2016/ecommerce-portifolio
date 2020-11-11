@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -34,30 +35,9 @@ class ProductController extends Controller
         return view('products.create');
     }
 
-    public  function  store()
+    public  function  store(ProductRequest $request)
     {
-        $rules = [
-            'title' => ['required', 'max:255'],
-            'description' => ['required', 'max:1000'],
-            'price' => ['required','min:1'],
-            'stock' => ['required','min:0'],
-            'status' => ['required','in:available, unavailable'],
-
-        ];
-
-        request()->validate($rules);
-
-
-        if (request()->stock == 0 && request()->status == 'available'){
-            session()->flash('error', 'If available must have stock');
-            //session()->put('error', 'If available must have stock');
-            //return  redirect()->back()->withInput(request()->all());
-            return  redirect()->back()->withInput(request()->all())
-                ->withErrors('If available must have stock');
-        }
-
-        //session()->forget('error');
-        $product = Product::create(request()->all());
+        $product = Product::create($request->validated());
 
         //session()->flash('success',"New Product with id {$product->id} was created");
 
@@ -82,22 +62,11 @@ class ProductController extends Controller
         ]);
     }
 
-    public  function  update(Product  $product)
+    public  function  update(ProductRequest $request  ,Product  $product)
     {
-        $rules = [
-            'title' => ['required', 'max:255'],
-            'description' => ['required', 'max:1000'],
-            'price' => ['required','min:1'],
-            'stock' => ['required','min:0'],
-            'status' => ['required','in:available, unavailable'],
-
-        ];
-
-        request()->validate($rules);
-
 
         //$product =Product::findOrFail($product);
-        $product->update(request()->all());
+        $product->update($request->validated());
 
         return redirect()->route('products.index')
                         ->withSuccess("The Product with id {$product->id} was updated");
@@ -116,3 +85,16 @@ class ProductController extends Controller
 
     }
 }
+
+
+/*
+ * request()->validate($rules);
+ *   $rules = [
+            'title' => ['required', 'max:255'],
+            'description' => ['required', 'max:1000'],
+            'price' => ['required','min:1'],
+            'stock' => ['required','min:0'],
+            'status' => ['required','in:available, unavailable'],
+
+        ];
+ */
