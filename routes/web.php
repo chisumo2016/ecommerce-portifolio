@@ -15,7 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'MainController@index')->name('main');
 
-Route::get('products','ProductController@index')->name('products.index');
+Route::Resource('products','ProductController');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+/*Route::get('products','ProductController@index')->name('products.index');
 
 Route::get('products/create','ProductController@create')->name('products.create');
 
@@ -27,10 +36,7 @@ Route::get('products/{product}/edit','ProductController@edit')->name('products.e
 
 Route::match(['put', 'patch'],   'products/{product}/edit','ProductController@update')->name('products.update');
 
-Route::delete("products/{product}",  'ProductController@destroy')->name('products.destroy');
+Route::delete("products/{product}",  'ProductController@destroy')->name('products.destroy');*/
 
 
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

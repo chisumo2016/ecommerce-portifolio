@@ -64,7 +64,36 @@ Using Implicit Model Binding In Laravel
    inject to me or bind to this method of an instance of any model
    Done automatically
    Route::get('products/{product}','ProductController@show')->name('products.show');
+   Route::get('products/{product:title}','ProductController@show')->name('products.show');
    public  function show(Product  $product)
+
+
+Resource Routes in Laravel
+ -Handle specific model
+ -Route::Resource();
+ -Plular
+ -Nama
+
+
+ Form Request  to validate Data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
