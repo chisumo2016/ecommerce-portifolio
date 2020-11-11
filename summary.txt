@@ -27,3 +27,29 @@ ORM
     $product =Product::find($product);
 
     dd(request, request->title, request->all());
+
+  Laravel UI
+
+  composer require laravel/ui
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

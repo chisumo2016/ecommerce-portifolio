@@ -42,3 +42,7 @@ Route::delete("products/{product}",  'ProductController@destroy')->name('product
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
