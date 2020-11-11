@@ -60,9 +60,11 @@ Middleware and How to restrict access and actions in laravel
                    }
 
 
-
-
-
+Using Implicit Model Binding In Laravel
+   inject to me or bind to this method of an instance of any model
+   Done automatically
+   Route::get('products/{product}','ProductController@show')->name('products.show');
+   public  function show(Product  $product)
 
 
 
