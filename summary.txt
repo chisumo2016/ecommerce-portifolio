@@ -110,6 +110,29 @@ php artisan make:model  Image -a
                 updated_at                                      created_at
                                                                 updated_at
 
+Layouts and components  with laravel blade
+  -show the link to handle the product in layouts app
+  -show the list of product in main/welcome view
+  -Introduce the component in blade by creating a components folder and extends to blade
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
