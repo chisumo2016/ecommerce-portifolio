@@ -37,6 +37,14 @@ ORM
     Register
     Logout
 
+    Laravel Mix  to Generate the Frontend Assests
+
+     Compser Json
+     package jSON
+     WEBPACK JSON
+  npm install && npm run dev
+
+
 
 
 

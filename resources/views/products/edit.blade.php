@@ -34,7 +34,7 @@
             </select>
         </div>
         <div class="form-row">
-            <button class="btn btn-primary btn-lg" type="submit">Update Button</button>
+            <button class="btn btn-primary btn-lg mt-3" type="submit">Update Product</button>
         </div>
     </form>
 
