@@ -44,6 +44,51 @@ ORM
      WEBPACK JSON
   npm install && npm run dev
 
+Middleware and How to restrict access and actions in laravel
+  Middleware - control the specific  to access
+      localhost/product/create   we can restrict some access
+          http- kernel
+          call handle method - authenticated the user
+           public function __construct()
+               {
+                   $this->middleware('auth')->only(['index', 'show']);
+               }
+
+                public function __construct()
+                   {
+                       $this->middleware('auth')->except(['index', 'show']);
+                   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
