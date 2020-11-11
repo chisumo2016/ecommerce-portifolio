@@ -83,6 +83,54 @@ Resource Routes in Laravel
     $product = Product::create($request->all());   better way is -which validate the input
     $product = Product::create($request->validate());
 
+ Using Artisan to create Multiple Components at Once
+   Make sure you follow the order based on foreign key
+   order table must be existed before you create payment table
+   user table must be existed before you create order table
+
+   ORDER TO CREATE
+   user
+   product
+   image
+   cart
+   order
+   payment
+
+php artisan make:model --help
+php artisan make:model  Image -a
+
+ Payment       Product          Order           Image          user                     Cart
+ id             id              id              id              id                      id
+ amount         title           status          path            name                    created_at
+ payed_at       description     customer_id     created_at      email                   updated_at
+ order_id       price           created_at      updated_at      email_verified_at
+ created_at     stock           updated_at                      password
+ updated_at     status                                          remember_token
+                created_at                                      admin_since
+                updated_at                                      created_at
+                                                                updated_at
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
