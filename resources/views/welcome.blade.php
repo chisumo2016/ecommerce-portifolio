@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.app')
 
 @section('content')
     <h1>Welcome</h1>

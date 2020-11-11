@@ -32,6 +32,11 @@ ORM
 
   composer require laravel/ui
 
+  Authenticated system
+    Login
+    Register
+    Logout
+
 
 
 
