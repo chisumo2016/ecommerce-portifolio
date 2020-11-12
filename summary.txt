@@ -511,6 +511,47 @@ Assigned the payments
    }
 >>$user->payments;  return the collection of payments
 
+POLYMORPHIC RELATIONSHIP
+ -One to One Polymorphic relationships
+    Image can belongs to user or products
+    image and user 1:1
+      image migration
+        $table->morphs('imageables');
+            - imageables_type
+             -imageables_id
+
+Image Model
+   public  function  imageable()
+      {
+          return $this->morphTo();
+      }
+
+User Model
+
+
+public function  image()
+{
+    return $this->morphOne(Image::class, 'imageable');
+}
+
+Create  a user
+ $user= factory(App\User::class)->create();
+
+ Assign an image to user
+ $image = $user->image()->save(factory(App\Image::class)->states('user')->make());
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
