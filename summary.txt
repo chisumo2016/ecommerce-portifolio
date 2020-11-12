@@ -116,6 +116,9 @@ Layouts and components  with laravel blade
   -Introduce the component in blade by creating a components folder and extends to blade
 
 
+  Indicating the Columns of the tables in the migrations
+
+
 
 
 
