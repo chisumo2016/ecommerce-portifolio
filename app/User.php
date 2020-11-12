@@ -48,7 +48,12 @@ class User extends Authenticatable
 
 
 public  function  orders() //pbtaine the collection of orders
+    {
+       return $this->hasMany(Order::class,'customer_id') ;
+    }
+
+public  function  payments()
 {
-   return $this->hasMany(Order::class,'customer_id') ;
+    return $this->hasManyThrough(Payment::class, Order::class, 'customer_id');
 }
 }

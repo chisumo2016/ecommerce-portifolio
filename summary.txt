@@ -438,8 +438,105 @@ MANY TO MANY RELATIOSNSHIP
        ],
      }
   >>>
-
+access the quantity
   $cart->products()->first()->pivot->quantity;
+
+  RELATIONSHIP  THROUGH RELATIONSHIPS WITH ELOQUENTS
+
+  -Through user we can get direct payment through order
+
+   User Model
+
+   public  function  payments()
+   {
+       return $this->hasManyThrough(Payment::class, Order::class, 'customer_id');
+   }
+
+   Create and access
+
+   Psy Shell v0.10.4 (PHP 7.4.6 — cli) by Justin Hileman
+   >>> $user = factory(App\User::class)->create();
+   => App\User {#4042
+        name: "General O'Reilly",
+        email: "xzavier.wunsch@example.org",
+        email_verified_at: "2020-11-12 16:52:02",
+        admin_since: "2020-11-12 16:52:02",
+        updated_at: "2020-11-12 16:52:02",
+        created_at: "2020-11-12 16:52:02",
+        id: 1,
+      }
+   >>> $user->orders()->save(factory(App\Order::class)->make());
+   => App\Order {#4054
+        status: "paid",
+        customer_id: 1,
+        updated_at: "2020-11-12 16:53:14",
+        created_at: "2020-11-12 16:53:14",
+        id: 1,
+      }
+   >>>
+
+Assigned the payments
+
+>>> $order->payment()->save(factory(App\Payment::class)->make());
+=> App\Payment {#4063
+     amount: 59.94,
+     payed_at: "2020-07-10 03:00:18",
+     order_id: 2,
+     updated_at: "2020-11-12 16:56:20",
+     created_at: "2020-11-12 16:56:20",
+     id: 1,
+   }
+>>> $payment = $order->payment()->save(factory(App\Payment::class)->make());
+  => App\Payment {#4055
+       amount: 459.18,
+       payed_at: "2020-11-09 01:24:37",
+       order_id: 2,
+       updated_at: "2020-11-12 16:58:01",
+       created_at: "2020-11-12 16:58:01",
+       id: 2,
+     }
+
+>>$user->orders;
+
+>>$user->orders()->find(3);
+
+>>> $user->orders()->find(2)->payment;
+=> App\Payment {#4044
+     id: 1,
+     amount: 59.94,
+     payed_at: "2020-07-10 03:00:18",
+     order_id: 2,
+     created_at: "2020-11-12 16:56:20",
+     updated_at: "2020-11-12 16:56:20",
+   }
+>>$user->payments;  return the collection of payments
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
