@@ -211,6 +211,193 @@ PAYMENT - ORDER  Payment belongs to an order
        >>> $payment = App\Payment::find(2);
           >$payment->order;
 
+    ONE TO MANY RELATIONSHIP ELOQUENT
+      -Order and User
+      -An order must belongs to user  bse of that Order has the foreign key
+      -User can have multiple Order
+      example
+       Schema::create('orders', function (Blueprint $table) {
+                   $table->id();
+                   $table->string('status')->default('pending');
+                   $table->bigInteger('user_id')->unsigned();
+                   $table->timestamps();
+
+                   $table->foreign('customer_id')->references('id')->on('users');
+               });
+   order
+    public function  user()
+       {
+           return $this->belongsTo(User::class, 'customer_id');
+       }
+
+   user
+
+   public  function  orders()
+   {
+      return $this->hasMany(Order::class, 'customer_id') ;
+   }
+
+   Tinker to create a user
+     $user = factory(App\User::class)->create();
+
+  Let associate the user with an order
+
+  >>> $user->orders()->save(factory(App\Order::class)->make());
+
+  Search the user with ID 1
+   $user = App\User::find(1);
+
+   BE CAREFUL
+ >>> $user->orders();
+ => Illuminate\Database\Eloquent\Relations\HasMany {#4034}
+
+USE  - COLLECTION OF ORDERS
+$user->orders;
+$order = $user->orders()->first();
+
+>>> $user = factory(App\User::class)->create();
+=> App\User {#4037
+     name: "Hollie Turner",
+     email: "langworth.eldridge@example.com",
+     email_verified_at: "2020-11-12 14:04:33",
+     admin_since: "2020-11-12 14:04:33",
+     updated_at: "2020-11-12 14:04:33",
+     created_at: "2020-11-12 14:04:33",
+     id: 3,
+   }
+>>> $user->orders()->save(factory(App\Order::class)->make());
+=> App\Order {#4055
+     status: "paid",
+     customer_id: 3,
+     updated_at: "2020-11-12 14:07:00",
+     created_at: "2020-11-12 14:07:00",
+     id: 2,
+   }
+
+ EXAMPLE 2
+
+  >php artisan tinker
+ Psy Shell v0.10.4 (PHP 7.4.6 — cli) by Justin Hileman
+ >>> $user = factory(App\User::class)->create;
+ PHP Notice:  Undefined property: Illuminate/Database/Eloquent/FactoryBuilder::$create in /Users/os/Documents/projects/ecommerce-portifolioeval()'d code on line 1
+ => null
+ >>> $user = factory(App\User::class)->create();
+ => App\User {#4037
+      name: "Hollie Turner",
+      email: "langworth.eldridge@example.com",
+      email_verified_at: "2020-11-12 14:04:33",
+      admin_since: "2020-11-12 14:04:33",
+      updated_at: "2020-11-12 14:04:33",
+      created_at: "2020-11-12 14:04:33",
+      id: 3,
+    }
+ >>> $user->orders()->save(factory(App\Order::class)->make());
+ => App\Order {#4055
+      status: "paid",
+      customer_id: 3,
+      updated_at: "2020-11-12 14:07:00",
+      created_at: "2020-11-12 14:07:00",
+      id: 2,
+    }
+ >>> $user = App\User::find(3);
+ => App\User {#4007
+      id: 3,
+      name: "Hollie Turner",
+      email: "langworth.eldridge@example.com",
+      email_verified_at: "2020-11-12 14:04:33",
+      admin_since: "2020-11-12 14:04:33",
+      created_at: "2020-11-12 14:04:33",
+      updated_at: "2020-11-12 14:04:33",
+    }
+ >>> $user->orders()->get();
+ => Illuminate\Database\Eloquent\Collection {#4060
+      all: [
+        App\Order {#4041
+          id: 2,
+          status: "paid",
+          customer_id: 3,
+          created_at: "2020-11-12 14:07:00",
+          updated_at: "2020-11-12 14:07:00",
+        },
+      ],
+    }
+ >>> $user->orders;
+ => Illuminate\Database\Eloquent\Collection {#4036
+      all: [
+        App\Order {#4052
+          id: 2,
+          status: "paid",
+          customer_id: 3,
+          created_at: "2020-11-12 14:07:00",
+          updated_at: "2020-11-12 14:07:00",
+        },
+      ],
+    }
+ >>> $order = $user->orders()->first();
+ => App\Order {#4042
+      id: 2,
+      status: "paid",
+      customer_id: 3,
+      created_at: "2020-11-12 14:07:00",
+      updated_at: "2020-11-12 14:07:00",
+    }
+ >>> $order->users;
+ => null
+ >>> $order->user;
+ => App\User {#4039
+      id: 3,
+      name: "Hollie Turner",
+      email: "langworth.eldridge@example.com",
+      email_verified_at: "2020-11-12 14:04:33",
+      admin_since: "2020-11-12 14:04:33",
+      created_at: "2020-11-12 14:04:33",
+      updated_at: "2020-11-12 14:04:33",
+    }
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -47,5 +47,8 @@ class User extends Authenticatable
     ];
 
 
-
+public  function  orders() //pbtaine the collection of orders
+{
+   return $this->hasMany(Order::class,'customer_id') ;
+}
 }
