@@ -129,6 +129,172 @@ Implemented the Factories to the Models
  - save for product
  - save for user
  -factory(App\Cart::class)->create();  $instance = App\Cart::factory()->create();
+ -factory(App\Payment::class)->create();  $instance = App\Cart::factory()->create();
+ -factory(App\Image::class)->create();   $instance = App\Cart::factory()->user()->create();
+
+
+ RELATIONSHIP
+
+php artsian tinker
+>>$cart = factory (App\Cart::class)->create();   -- Laravel 7.4.6 but laravel 8 will throw an error
+PHP Fatal Error : call to undefined function factory() in Psy Shell code on line 1 after laravel 8
+>>$cart = App\Cart::factory(6)->create();
+>>$cart = App\Cart::factory(6)->create(['user_id'=> $user->id]);
+>>App\Model::factory();
+
+ONE TO ONE RELATIONSHIP MODEL / TABLE
+
+PAYMENT - ORDER  Payment belongs to an order
+  $table->bigInteger('order_id')->unsigned();
+
+  example
+
+        Schema::create('payments', function (Blueprint $table) {
+            $table->id();
+            $table->float('amount')->unsigned();
+            $table->timestamp('payed_at')->nullable();
+            $table->bigInteger('order_id')->unsigned();
+            $table->timestamps();
+
+            $table->foreign('order_id')->references('id')->on('orders');
+        });
+
+        Model Payment
+
+      public  function  order()
+         {
+             return $this->belongsTo(Order::class);
+         }
+
+        public  function  payment()
+          {
+              return $this->hasOne(Payment::class);
+          }
+
+          remember to add mass assigment
+
+          $payment = factory(App\Payment::class)->make(); will not store in database
+
+          >>> $payment = factory(App\Payment::class)->create();
+          Illuminate/Database/QueryException with message 'SQLSTATE[HY000]: General error: 1364 Field 'order_id' doesn't have a default value (SQL: insert into `payments` (`amount`, `payed_at`, `updated_at`, `created_at`) values (344.77, 2020-09-08 05:06:04, 2020-11-12 13:03:06, 2020-11-12 13:03:06))'
+          This because of foreign key
+
+          We need to create an order first then payment to be able to persist data in the database
+
+         >>> $order = factory(App\Order::class)->create();
+         => App\Order {#4041
+              status: "paid",
+              updated_at: "2020-11-12 13:09:34",
+              created_at: "2020-11-12 13:09:34",
+              id: 1,
+            }
+
+         $payment = factory(App\Payment::class)->create(['order_id'=> 1]); but the better way
+
+          $payment = App\Payment::create(['amount'=>200 , 'payed_at'=>now(), 'order_id'=>2]);
+
+         App\Payment::all();
+
+         using the relationship
+         $payment = $order->payment()->save(factory(App\Payment::class)->make());
+
+         Find the Order via relationship
+
+         $order = App\Order::find(1);
+
+         To obtained the Payment through relationship
+         $order->payment;
+
+          $order->payment()->get();  query builder
+
+          Inverse
+       >>> $payment = App\Payment::find(2);
+          >$payment->order;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
