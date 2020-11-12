@@ -123,6 +123,39 @@ Layouts and components  with laravel blade
        Mass Assigements to each model
        PHP Carbon
 
+Implemented the Factories to the Models
+ - use faker
+ - Image belongs to product and user
+ - save for product
+ - save for user
+ -factory(App\Cart::class)->create();  $instance = App\Cart::factory()->create();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
