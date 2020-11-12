@@ -355,12 +355,145 @@ $order = $user->orders()->first();
     }
 
 
+MANY TO MANY RELATIOSNSHIP
+ product and cart
+ product and order
+
+ - create pivot table
+ -foreign key has to be in pivot table
+ -Singular and alphabetical
+ -remove the timestamps
+ -remove the id
+  php artisan make:migration CreateOrderProductTable --create=order_product
+  php artisan make:migration CreateCartProductTable --create=cart_product
+
+               $table->bigInteger('order_id')->unsigned();
+               $table->bigInteger('product_id')->unsigned();
+               $table->integer('quantity')->unsigned();
+
+               $table->foreign('order_id')->references('id')->on('orders');
+               $table->foreign('product_id')->references('id')->on('products');
+
+  Relationship
+-create a cart
+  $cart = factory(App\Cart::class)->create();
+-Attach the cart a product
+  >>> $cart->products()->attach([1,2]);
+  Illuminate/Database/QueryException with message 'SQLSTATE[HY000]: General error: 1364 Field 'quantity' doesn't have a default value (SQL: insert into `cart_product` (`cart_id`, `product_id`) values (1, 1), (1, 2))'
+  will fell to avaoid that we need to attach the quantity as well inorder to work
+
+  example
+
+  🌐 >php artisan tinker
+  Psy Shell v0.10.4 (PHP 7.4.6 — cli) by Justin Hileman
+  >>> $cart = factory(App\Cart::class)->create();
+  => App\Cart {#4042
+       updated_at: "2020-11-12 16:33:27",
+       created_at: "2020-11-12 16:33:27",
+       id: 1,
+     }
+  >>> $cart->products()->attach([1 =>['quantity' => 5], 2=> ['quantity' => 3]]);
+  => null
+  >>> $cart = App\Cart::dind(1);
+  BadMethodCallException with message 'Call to undefined method App/Cart::dind()'
+  >>> $cart = App\Cart::find(1);
+  => App\Cart {#4055
+       id: 1,
+       created_at: "2020-11-12 16:33:27",
+       updated_at: "2020-11-12 16:33:27",
+     }
+  >>> $cart->products;
+  => Illuminate\Database\Eloquent\Collection {#4060
+       all: [
+         App\Product {#4063
+           id: 1,
+           title: "In ut.",
+           description: "Temporibus vero fugit accusantium aut libero a.",
+           price: 62.66,
+           stock: 5,
+           status: "unavailable",
+           created_at: "2020-11-12 16:32:16",
+           updated_at: "2020-11-12 16:32:16",
+           pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4040
+             cart_id: 1,
+             product_id: 1,
+             quantity: 5,
+           },
+         },
+         App\Product {#4049
+           id: 2,
+           title: "Rem a modi.",
+           description: "Dignissimos at quaerat consequuntur sed rerum possimus. Quibusdam in pariatur aut.",
+           price: 69.26,
+           stock: 9,
+           status: "available",
+           created_at: "2020-11-12 16:32:16",
+           updated_at: "2020-11-12 16:32:16",
+           pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4062
+             cart_id: 1,
+             product_id: 2,
+             quantity: 3,
+           },
+         },
+       ],
+     }
+  >>>
+
+  $cart->products()->first()->pivot->quantity;
 
 
 
 
 
-      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
