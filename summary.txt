@@ -540,6 +540,43 @@ Create  a user
  Assign an image to user
  $image = $user->image()->save(factory(App\Image::class)->states('user')->make());
 
+ $image->imageable;
+
+
+
+ ONE TO MANY POLYMORPHIC
+   - Products and Image
+
+    public  function  images()
+       {
+           return $this->morphMany(Image::class,'imageable');
+       }
+
+Find the Product
+
+$product = App\Product::find(2);
+
+Assign image to product
+$images = $product->images()->saveMany(factory(App\Image::class,10)->make());
+$product->images;
+
+Find the image id 2
+$image1 = App\Image::find(2);
+$image1->imageable;
+
+resolove of instance of product or user
+image can belongs to proucts or user
+
+
+
+
+
+
+
+
+
+
+
 
 
 
