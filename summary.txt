@@ -641,6 +641,105 @@ Many to Many relation we're kind of repeating ourselves ,to resolve that problem
          },
 
 
+INSERTING SIMPLE MODEL VIA RELATIONSHIP USING DATABASE SEEDER
+  -
+  $products   = factory(Product::class, 50)->create();
+          $users      = factory(User::class, 20)->create(); //$users = User::factory(20)->create();
+
+          $orders     = factory(Order::class, 10) //$orders = Order::factory(10)
+                      ->make()
+                      ->each(function ($order) use ($users){
+                          //associate oreder to one user
+                          $order->customer_id  = $users->random()->id;
+                          $order->save();
+
+            //assocaite new payment - one payment with each
+
+            $payment = factory(Payment::class)->make();     // $payment = Payment::factory()->make();
+                  $order->payment()->save($payment);
+                  //$payment->order_id  = $order->id;
+                  //$payment->save();
+
+example
+  -To obtained the full list of user
+     $users = App\User::all();
+     $orders = App\Order::all();
+    $payments = App\Payment::all();
+    $order = App\Order::first();
+
+    Obtain the payment through an order
+
+    >>> $order -> payment
+    => App\Payment {#4031
+         id: 1,
+         amount: 435.08,
+         payed_at: "2020-07-18 23:32:59",
+         order_id: 1,
+         created_at: "2020-11-13 11:56:03",
+         updated_at: "2020-11-13 11:56:03",
+       }
+
+  Obtain the user via Order
+   >>> $order -> user;
+   => App\User {#4020
+        id: 20,
+        name: "Mallie Glover",
+        email: "welch.queenie@example.com",
+        email_verified_at: "2020-11-13 11:56:03",
+        admin_since: null,
+        created_at: "2020-11-13 11:56:03",
+        updated_at: "2020-11-13 11:56:03",
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
