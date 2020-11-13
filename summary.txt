@@ -567,6 +567,117 @@ $image1->imageable;
 resolove of instance of product or user
 image can belongs to proucts or user
 
+MANY TO MANY POLYMORPHIC RELATIONSHIP
+
+-Between Product and Cart
+-Between Product and Order
+
+Many to Many relation we're kind of repeating ourselves ,to resolve that problem we can remove
+ the order-product migration , one can manage all
+ -change the name of migration to productables  and it should in plural
+ -change the name of the tables productables
+ -Cardinality is very important
+
+
+ Order Model
+  return $this->morphToMany(Product::class, 'productable')->withPivot('quantity');
+ Cart Model
+ return $this->morphToMany(Product::class, 'productable')->withPivot('quantity');
+ Product Model
+  return $this->morphedByMany(Cart::class, 'productable')->withPivot('quantity'); //carts()
+  return $this->morphedByMany(Cart::class, 'productable')->withPivot('quantity'); //orders()
+ -Because product belongs to cart and order - m-m  laravel cannot figured out
+ -use morphedByMany
+
+ Tinker many - many
+  Order and product
+
+  - create user inorder to create an order
+     >>> $user = factory(App\User::class)->create();
+     => App\User {#4042
+          name: "Alberta Cremin Sr.",
+          email: "stoltenberg.kailee@example.org",
+          email_verified_at: "2020-11-13 10:40:14",
+          admin_since: null,
+          updated_at: "2020-11-13 10:40:14",
+          created_at: "2020-11-13 10:40:14",
+          id: 1,
+        }
+- create an order through relationship
+  >>> $order = $user->orders()->save(factory(App\Order::class)->make());
+  => App\Order {#4038
+       status: "paid",
+       customer_id: 1,
+       updated_at: "2020-11-13 10:44:27",
+       created_at: "2020-11-13 10:44:27",
+       id: 1,
+     }
+  >>>
+
+  -attach the product to this specific order
+  $order->products()->attach([4 => ['quantity'=>7], 9 =>['quantity'=>3]]);
+
+  - Get a product
+  $order->products;
+
+  >>> $order->products;
+  => Illuminate\Database\Eloquent\Collection {#4042
+       all: [
+         App\Product {#4007
+           id: 4,
+           title: "Hic voluptas explicabo.",
+           description: "Et debitis ipsam consequuntur eveniet inventore et.",
+           price: 64.01,
+           stock: 1,
+           status: "unavailable",
+           created_at: "2020-11-13 11:08:16",
+           updated_at: "2020-11-13 11:08:16",
+           pivot: Illuminate\Database\Eloquent\Relations\MorphPivot {#4043
+             productable_id: 1,
+             product_id: 4,
+             productable_type: "App\Order",
+             quantity: 7,
+           },
+         },
+
+
+
+
+
+
+
+
+
+
+$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
