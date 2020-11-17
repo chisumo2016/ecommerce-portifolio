@@ -810,6 +810,46 @@ ELOQUENT SCOPES TO IMPROVE VISUALIZATION
 
 
 
+USE NESTED RESOURCE IN LARAVEL TO  PRODUCT TO A CART
+  -Add prooduct to cart , user will click the button on the product to be able to add into a cart
+  -we need to build a form  to be able to add a cart
+  -existing product to existing cart
+  -Identify the cart
+  -we going to use the resource nested controller class
+  -parent must be present all the time
+    php artisan make:controller ProductCartController --parent=Product --model=cart
+    -store() method
+    -destroy() method
+  -create a set route must be in plural
+     eg Route::Resource('products.carts','ProductCartController')->only(['store','destroy']);
+-when the user click add to cart will be showing the quantity 1 ,2  etc for every single product
+-Every product will have  quantity
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
