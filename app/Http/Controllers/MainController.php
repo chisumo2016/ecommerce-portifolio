@@ -9,9 +9,13 @@ class MainController extends Controller
 {
     public  function  index()
     {
-        return view('welcome')->with([
+        $products= Product::available()->get();  //scope in product model
 
-            'products' => Product::all(),
+        return view('welcome')->with([
+            'products' => $products,
+            //'products' => Product::all(),
         ]);
     }
 }
+
+//$products = Product::where('status', 'available')->get();

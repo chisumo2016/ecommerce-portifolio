@@ -692,8 +692,126 @@ example
       }
 INSERTING POLYMORPHIC RELATIONSHIP USING SEEDER
 -Complex one
--product-Order
--Product-Cart
+-two type of different polymorphic relationshi
+-product-Order Order may have several produce  M:M polymorphic
+-Product-Cart   Cart may have several produce  M:M polymorphic
+-Product-Image     Product can have many image 1:M polymorphic
+-User-Image       User can have one image      1:1 polymorphic
+
+  SET OF IMAGE
+   >>> $image = App\Image::all();
+   App\Image {#4552
+           id: 166,
+           path: "img/products/9jpg",
+           created_at: "2020-11-16 19:33:38",
+           updated_at: "2020-11-16 19:33:38",
+           imageable_type: "App\Product",
+           imageable_id: 50,
+         },
+       ],
+     }
+
+
+FIND PRODUCT WITH ID 2
+
+>>> $product = App\Product :: find(2);
+=> App\Product {#4223
+     id: 2,
+     title: "Nulla non nam neque est.",
+     description: "Est excepturi quis dolorem autem suscipit.",
+     price: 67.13,
+     stock: 4,
+     status: "unavailable",
+     created_at: "2020-11-16 19:33:38",
+     updated_at: "2020-11-16 19:33:38",
+   }
+
+OBTAIN THE SET OF IMAGE
+
+$product->images;
+=> Illuminate\Database\Eloquent\Collection {#4229
+     all: [
+       App\Image {#4225
+         id: 25,
+         path: "img/products/2jpg",
+         created_at: "2020-11-16 19:33:38",
+         updated_at: "2020-11-16 19:33:38",
+         imageable_type: "App\Product",
+         imageable_id: 2,
+       },
+       App\Image {#4233
+         id: 26,
+         path: "img/products/2jpg",
+         created_at: "2020-11-16 19:33:38",
+         updated_at: "2020-11-16 19:33:38",
+         imageable_type: "App\Product",
+         imageable_id: 2,
+       },
+     ],
+   }
+
+   OBTAIN THE SET OF CART
+   >>> $product->carts;
+   => Illuminate\Database\Eloquent\Collection {#4207
+        all: [
+          App\Cart {#4235
+            id: 20,
+            created_at: "2020-11-16 19:33:38",
+            updated_at: "2020-11-16 19:33:38",
+            pivot: Illuminate\Database\Eloquent\Relations\MorphPivot {#4228
+              product_id: 2,
+              productable_id: 20,
+              productable_type: "App\Cart",
+              quantity: 2,
+            },
+          },
+        ],
+      }
+
+OBTAIN THE SET OF ORDERS
+>>> $product->orders;
+=> Illuminate\Database\Eloquent\Collection {#4217
+     all: [
+       App\Order {#4238
+         id: 3,
+         status: "pending",
+         customer_id: 6,
+         created_at: "2020-11-16 19:33:37",
+         updated_at: "2020-11-16 19:33:37",
+         pivot: Illuminate\Database\Eloquent\Relations\MorphPivot {#4245
+           product_id: 2,
+           productable_id: 3,
+           productable_type: "App\Order",
+           quantity: 2,
+         },
+       },
+     ],
+   }
+ The legacy version of the Laravel Eloquent factories
+   composer require laravel/legacy-factories
+
+
+ELOQUENT SCOPES TO IMPROVE VISUALIZATION
+-show the product if the status is available
+-Scopes allow you to easily re-use query logic in your models
+-Function to our model
+-allow to apply some restriction,query logic  we can utilize to all project
+-Two types of scopes
+    logic
+    local   https://laravel.com/docs/8.x/eloquent
+    - within the controller  we can use the method available();
+    -in the product model we can use ScopeAvailable($query)
+    -If my boss ask me to change the available i can do eg 1
+
+
+ Error : Image not showing via <
+        img  class="card-img-top" src="{{ asset( $product->images->first()->path )}}" alt="" height="500">
+ Solution :
+
+
+
+
+
 
 
 
