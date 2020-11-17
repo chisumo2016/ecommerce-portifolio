@@ -823,7 +823,18 @@ USE NESTED RESOURCE IN LARAVEL TO  PRODUCT TO A CART
   -create a set route must be in plural
      eg Route::Resource('products.carts','ProductCartController')->only(['store','destroy']);
 -when the user click add to cart will be showing the quantity 1 ,2  etc for every single product
--Every product will have  quantity
+-Every product will have  quantity once click add to cart
+
+
+LEARN OUR TO USE COOKIES TO RETRIEVE THE SHOPPING CART
+  -To resolve the current cart the user may be able to use
+  -if the cookie exist we can resolve otherwise will be creating a cart
+  -If the user remove the cookies ,the cart will be lost
+  -we get an id from the cookie
+  -Use Facades cookie
+  -we need to return the cookie in the resources
+  -attach ,
+     sync  adding the new element and removing  , syncWithoutDetaching
 
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\cart;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Http\Request;
 
 class ProductCartController extends Controller
@@ -19,20 +20,26 @@ class ProductCartController extends Controller
      */
     public function store(Request $request, Product $product)
     {
-        $cart =  Cart::create(); // we dont pass any additionaal paremeter
+        //$cart =  Cart::create()->cookie(); // we dont pass any additionaal paremeter
+
+        $cart = $this->getFromCookieOrCreate();
 
         //cureent quantity if exist
+
         $quantity = $cart->products()
             ->find($product->id)
             ->pivot
             ->quantity ?? 0;
 
+   //attach , sync , syncWithoutDetaching
 
-        $cart->products()->attach([
+        $cart->products()->syncWithoutDetaching([
             $product->id => ['quantity' => $quantity + 1],
         ]);
 
-        return  redirect()->back();
+        $cookie = Cookie::make('cart',$cart->id, 7 * 24 * 60 ); // name of cart , id , how many times
+
+        return  redirect()->back()->cookie($cookie);
     }
 
 
@@ -46,5 +53,14 @@ class ProductCartController extends Controller
     public function destroy(Product $product, cart $cart)
     {
         //
+    }
+
+    public function  getFromCookieOrCreate()
+    {
+        $cartId =  Cookie::get('cart');
+
+        $cart = Cart::find($cartId);
+
+        return  $cart ?? Cart::create();
     }
 }
