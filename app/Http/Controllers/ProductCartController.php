@@ -45,7 +45,8 @@ class ProductCartController extends Controller
         ]);
 
         //$cookie = Cookie::make('cart',$cart->id, 7 * 24 * 60 ); // name of cart , id , how many times  or
-        $cookie = $this->cartService->makeCookie();
+        //$cookie = $this->cartService->makeCookie();
+        $cookie = $this->cartService->makeCookie($cart);
 
         return  redirect()->back()->cookie($cookie);
     }

@@ -16,8 +16,6 @@ class CartController extends Controller
         $this->cartService = $cartService;
     }
 
-
-
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +23,8 @@ class CartController extends Controller
      */
     public function index()
     {
-        $cart = $this->cartService->getFromCookieOrCreate();
+        //$cart = $this->cartService->getFromCookieOrCreate();
+        $cart = $this->cartService->getFromCookie();
 
         return  view('carts.index')->with([
             'cart' => $cart,

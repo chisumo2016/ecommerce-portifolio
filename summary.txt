@@ -866,6 +866,27 @@ USE DEPENDENCY INJECTION IN LARAVEL TO DISPLAY THE  PRODUCTS OF A CARTS
  -we just remove the relationship (pivot table) in the cart and not product itself
 
 
+USING LARAVEL COLLECTIONS AND USE IT TO INJECT THE CART COUNTER IN BLADE
+ -Cart link - show the counter
+ -app layout  @inject('cartService, 'App\Services\CartService') to every single view
+ - use inject method from laravel, laravel throw blade
+ -use collection in the cart
+   https://laravel.com/docs/8.x/collections
+     sum and plunk
+-change the method from the cartController to be getfromcookie()
+- we need to add the condition in the cart index
+    ! isset($cart)
+- Application -cookies
+
+
+
+
+
+
+
+
+
+
 
 
 
