@@ -836,6 +836,34 @@ LEARN OUR TO USE COOKIES TO RETRIEVE THE SHOPPING CART
   -attach ,
      sync  adding the new element and removing  , syncWithoutDetaching
 
+USE DEPENDENCY INJECTION IN LARAVEL TO DISPLAY THE  PRODUCTS OF A CARTS
+  -User as to have the way to view the cart
+  -Dependecy injection
+  -link to show the cart in app layouts
+  - routes of carts in web route only index
+  -create a cartControler  and resolve the cart from the cookie
+  -instead of copying the getFromCookieOrCreate and paste to cart controller
+  -we can create a service provider in app, allow to resolve
+     App\Service\CartService.php
+- - we can remove  getFromCookieOrCreate()  and paste into service file
+  -we can use the service we created to our controller
+  - we going to use the dependency Injection in ProductController
+  -create a carts index
+  -obtain the product from the carts
+     show the cart is empty and if not show the product
+     https://ecommerce-portifolio.test/carts
+ -SERVICE HELP US NOT REPEAT THE CODE .
+
+
+
+
+
+
+
+
+
+
+
 
 
 
