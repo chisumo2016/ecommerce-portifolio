@@ -856,6 +856,41 @@ USE DEPENDENCY INJECTION IN LARAVEL TO DISPLAY THE  PRODUCTS OF A CARTS
 
 
 
+ TAKE ADVANTAGE OF THE SERVICE TO REMOVE THE CART PRODUCTS WITH LARAVEL
+ -remove the cart from cookie in cartproduct controller
+ -let add if condition in the product cart components
+ -create a form  to remove the cart from products
+ -Put and else
+ -resolve the cookie
+ creating the cookie should be responsibility of cart service
+ -we just remove the relationship (pivot table) in the cart and not product itself
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
