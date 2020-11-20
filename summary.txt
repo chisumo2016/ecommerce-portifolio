@@ -876,7 +876,51 @@ USING LARAVEL COLLECTIONS AND USE IT TO INJECT THE CART COUNTER IN BLADE
 -change the method from the cartController to be getfromcookie()
 - we need to add the condition in the cart index
     ! isset($cart)
-- Application -cookies
+- Application -cookies- delete from there
+
+
+ORDER
+
+RECALL SOME LARAVEL FEATURE TO CONFIRM AND INITIATE AN  ORDER
+- Press cart to make order
+-link in cart
+    <a  class=" btn btn-sucess mb-3" href="{{ route('orders.create') }}">Start Order</a>
+- create two methods create and store
+-To send the products which are currently in the carts not in the order
+-we obtained cart from the cookie
+-Show order details
+-->total = product * quantity via pivot table
+-problem of showing an images
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

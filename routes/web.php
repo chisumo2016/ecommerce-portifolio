@@ -17,6 +17,8 @@ Route::get('/', 'MainController@index')->name('main');
 
 Route::Resource('products','ProductController');
 Route::Resource('carts','CartController')->only(['index']);
+Route::Resource('orders','OrderController')->only(['create','store']);
+
 Route::Resource('products.carts','ProductCartController')->only(['store','destroy']);
 
 
