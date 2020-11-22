@@ -48,19 +48,33 @@ class User extends Authenticatable
     ];
 
 
-public  function  orders() //pbtaine the collection of orders
+    public  function  orders() //pbtaine the collection of orders
     {
        return $this->hasMany(Order::class,'customer_id') ;
     }
 
-public  function  payments()
-{
-    return $this->hasManyThrough(Payment::class, Order::class, 'customer_id');
+    public  function  payments()
+    {
+        return $this->hasManyThrough(Payment::class, Order::class, 'customer_id');
+    }
+
+
+    public function  image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+
+    public  function  isAdmin()
+    {
+        return $this->admin_since != null && $this->admin_since->lessThanOrEqualTo(now());
+    }
 }
 
 
-public function  image()
-{
-    return $this->morphOne(Image::class, 'imageable');
-}
-}
+
+
+
+
+
+
+

@@ -936,7 +936,7 @@ LEARN ACCESSORS IN LARAVEL AND USE IT TO CALCULATE TOTALS
    -create a payment view
    -Display the grand total via order
    -User click Pay Button ,will go on store message
-   -remove the element from the cart once the payment is successful via cartService and inject the middlware auth
+   -remove the element from the cart once the payment is successful via cartService and inject the middlEware auth
    -The message with show ob view to say thank you.
 
 
@@ -954,7 +954,21 @@ LEARN ACCESSORS IN LARAVEL AND USE IT TO CALCULATE TOTALS
 
 - Try to access the product ,404 error page  soln https://ecommerce-portifolio.test/panel/products
 
+DETERMINING IF A USER IS AN ADMINISTRATOR USING THE MODEL AND
+-To check if the specific user is admin  in model (USER)
 
+
+CREATE YOUR OWN MIDDLEWARE INB LARAVEL TO CONTROL ADMINISTRATIVE ACESSS
+
+
+IMPLEMENT THE MAIN ADMIN PANEL ACTION WITH LARAVEL
+App\User::all();
+App\User::find(20);
+$user = App\User::find(22);
+$user->isAdmin();
+$user->fill(['admin_since'=> now()->addYear(5)]);
+$user->forcefill(['admin_since'=> now()->addYear(5)]);
+$user->save()
 
 
 
