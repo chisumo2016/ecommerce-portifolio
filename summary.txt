@@ -975,6 +975,14 @@ CREATE YOUR OWN MIDDLEWARE INB LARAVEL TO CONTROL ADMINISTRATIVE ACESSS
 
 
 IMPLEMENT THE MAIN ADMIN PANEL ACTION WITH LARAVEL
+ - app layout product route
+     <li class="nav-item">
+         <a class="nav-link" href="{{ route('products.index') }}">Products</a>
+     </li>
+  -Put the condition  to check if is an admin
+  -admin user can manage alot in the future
+  -create a panel controller inside the panel folder
+  php artisan make:controller Panel\\PanelController
 
 
 
