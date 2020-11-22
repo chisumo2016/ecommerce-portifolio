@@ -937,6 +937,49 @@ LEARN ACCESSORS IN LARAVEL AND USE IT TO CALCULATE TOTALS
    -Display the grand total via order
    -User click Pay Button ,will go on store message
    -remove the element from the cart once the payment is successful via cartService and inject the middlware auth
+   -The message with show ob view to say thank you.
+
+
+   SEPARATING  THE ROUTES FROM THE ADMIN PANEL IN LARAVEL
+   - separate  the routes
+   -dublicate the web file to panel file
+   -remove the  proucts route and put in the panel
+        Route::Resource('products','ProductController');
+  -We need to tell the laravel what to do with panel
+  -we need to create a mapPanelRoutes() in the providers-> RoutesServiceProvider
+  -Move our productController to Panel Folder after created
+  -Add a new namespace Panal; namespace App\Http\Controllers\Panel;
+  -we need to import the defination of controller bse different location
+     use App\Http\Controllers\Controller;
+
+- Try to access the product ,404 error page  soln https://ecommerce-portifolio.test/panel/products
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
