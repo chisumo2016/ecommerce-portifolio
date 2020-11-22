@@ -20,6 +20,7 @@ Route::Resource('carts','CartController')->only(['index']);
 Route::Resource('orders','OrderController')->only(['create','store']);
 
 Route::Resource('products.carts','ProductCartController')->only(['store','destroy']);
+Route::Resource('orders.payments','OrderPaymentController')->only(['create','store']);
 
 
 Auth::routes();

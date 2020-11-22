@@ -928,6 +928,18 @@ LEARN ACCESSORS IN LARAVEL AND USE IT TO CALCULATE TOTALS
 
 
 
+   USE A LARAVEL NESTED RESOURCE CONTROLLER TO CHARGE FOR AN ORDER
+   -associate and create payment to an order
+   -insert the payment to specific order
+   -nested controller
+     php artisan make:controller OrderPaymentController --parent=Order --model=Payment
+   -create a payment view
+   -Display the grand total via order
+   -User click Pay Button ,will go on store message
+   -remove the element from the cart once the payment is successful via cartService and inject the middlware auth
+
+
+
 
 
 
