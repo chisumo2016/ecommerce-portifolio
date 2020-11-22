@@ -954,21 +954,28 @@ LEARN ACCESSORS IN LARAVEL AND USE IT TO CALCULATE TOTALS
 
 - Try to access the product ,404 error page  soln https://ecommerce-portifolio.test/panel/products
 
-DETERMINING IF A USER IS AN ADMINISTRATOR USING THE MODEL AND
+DETERMINING IF A USER IS AN ADMINISTRATOR USING THE MODEL AND carbon
 -To check if the specific user is admin  in model (USER)
+ App\User::all();
+ App\User::find(20);
+ $user = App\User::find(22);
+ $user->isAdmin();
+ $user->fill(['admin_since'=> now()->addYear(5)]);
+ $user->forcefill(['admin_since'=> now()->addYear(5)]);
+ $user->save()
 
 
 CREATE YOUR OWN MIDDLEWARE INB LARAVEL TO CONTROL ADMINISTRATIVE ACESSS
+  - validdation and action
+  -create a new middlware
+    php artisan make:middleware checkIfAdmin
+ -All middleware have handle method
+ -in the panel - middleware was added is.admin
+ -we need to register the middleware in the kernel
 
 
 IMPLEMENT THE MAIN ADMIN PANEL ACTION WITH LARAVEL
-App\User::all();
-App\User::find(20);
-$user = App\User::find(22);
-$user->isAdmin();
-$user->fill(['admin_since'=> now()->addYear(5)]);
-$user->forcefill(['admin_since'=> now()->addYear(5)]);
-$user->save()
+
 
 
 
