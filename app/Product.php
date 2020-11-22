@@ -46,5 +46,16 @@ class Product extends Model
     }
 
 
+    /**
+     * Get the total of prodyct.
+     *
+     * @return number
+     */
+    public function  getTotalAttribute()
+    {
+         return $this->price * $this->pivot->quantity;
+    }
+
+
 
 }

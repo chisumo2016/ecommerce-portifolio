@@ -36,5 +36,16 @@ class Order extends Model
     }
 
 
+    /**
+     * Get the total of cart.
+     *
+     * @return number
+     */
+    public function  getTotalAttribute()
+    {
+        return $this->products->pluck('total')->sum();
+    }
+
+
 
 }

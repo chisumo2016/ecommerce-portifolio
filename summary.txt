@@ -893,6 +893,17 @@ RECALL SOME LARAVEL FEATURE TO CONFIRM AND INITIATE AN  ORDER
 -problem of showing an images
 
 
+LEARN ACCESSORS IN LARAVEL AND USE IT TO CALCULATE TOTALS
+ -GET /ASSESSOR
+ Accessors and mutators allow you to format Eloquent attribute values when you retrieve or set them on model instances.
+ -done in model directly and call the method in the view
+ -adding every products into the cart via plunk in car model
+ - we can do in the order model as we did  in product
+ -Cart ->index.php  <h4 class="text-center">Your Cart Total:  <strong>{{   $cart->total}}</strong></h4>
+ -in component we're going to show the quantity of product in the cart and total of specific product
+   <p class="card-text">{{ $product->pivot->quantity }}<strong>{{ $product->total}} </strong></p>
+
+
 
 
 
