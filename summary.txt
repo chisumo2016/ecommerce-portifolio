@@ -894,6 +894,8 @@ RECALL SOME LARAVEL FEATURE TO CONFIRM AND INITIATE AN  ORDER
 
 
 LEARN ACCESSORS IN LARAVEL AND USE IT TO CALCULATE TOTALS
+
+-Through the cart and products via collections
  -GET /ASSESSOR
  Accessors and mutators allow you to format Eloquent attribute values when you retrieve or set them on model instances.
  -done in model directly and call the method in the view
@@ -902,6 +904,46 @@ LEARN ACCESSORS IN LARAVEL AND USE IT TO CALCULATE TOTALS
  -Cart ->index.php  <h4 class="text-center">Your Cart Total:  <strong>{{   $cart->total}}</strong></h4>
  -in component we're going to show the quantity of product in the cart and total of specific product
    <p class="card-text">{{ $product->pivot->quantity }}<strong>{{ $product->total}} </strong></p>
+
+
+   IDENTIFY AUTHENTICATED USERS AND CREATE AN ORRDER
+   -Take the products in the cart and attach to new order which we're going to created
+   -Once the user has confirmed
+   -How? To create a button the  order create view
+   -Will send the post request in the order create view blade
+   -Store in Order Controller and customer_id in order moderl is an instance of the user
+   -Identify the user via session
+   -Middleware to authenticate the user
+   -Store and create need an authenticated user
+   -Once the user click start -> need an authenticate user inorder to procede the order
+   -STORE controller we can ge the user
+      $user =  $request->user();
+              dd($user);
+   -we know is the user we want then we can order
+   -obtain cart from the cookie
+   -obtain the products via collection via map()
+   -function will receive every single produce
+   -attach the key to a specific order via mapKeys
+   -to turn the collection to array
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
