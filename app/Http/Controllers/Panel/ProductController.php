@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
-use App\Product;
+use App\PanelProduct;
 use App\Scopes\AvailableScope;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,22 +12,12 @@ use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
 
-//    /**
-//     * Create a new controller instance.
-//     *
-//     * @return void
-//     */
-//    public function __construct()
-//    {
-//        $this->middleware('auth');
-//    }
-
 
     public  function  index()
     {
         //$products = Product::all();
-        $products = Product::withoutGlobalScope(AvailableScope::class)->get();
-
+        //$products = Product::withoutGlobalScope(AvailableScope::class)->get();
+        $products = PanelProduct::all();
         return view('products.index')->with([
             'products' => $products,
         ]);
@@ -40,7 +30,8 @@ class ProductController extends Controller
 
     public  function  store(ProductRequest $request)
     {
-        $product = Product::create($request->validated());
+        //$product = Product::create($request->validated());
+        $product = PanelProduct::create($request->validated());
 
         //session()->flash('success',"New Product with id {$product->id} was created");
 
@@ -48,7 +39,7 @@ class ProductController extends Controller
                         ->withSuccess("New Product with id {$product->id} was created");
     }
 
-    public  function show(Product  $product)
+    public  function show(PanelProduct  $product)
     {
         //$product =Product::findOrFail($product);
 
@@ -58,7 +49,7 @@ class ProductController extends Controller
         ]);
     }
 
-    public  function  edit(Product  $product)
+    public  function  edit(PanelProduct  $product)
     {
         return view('products.edit')->with([
             'product' => $product
@@ -66,7 +57,7 @@ class ProductController extends Controller
         ]);
     }
 
-    public  function  update(ProductRequest $request  ,Product  $product)
+    public  function  update(ProductRequest $request  ,PanelProduct  $product)
     {
 
         //$product =Product::findOrFail($product);
@@ -79,7 +70,7 @@ class ProductController extends Controller
         //return $product;
     }
 
-    public  function  destroy(Product  $product)
+    public  function  destroy(PanelProduct $product)
     {
         //$product =Product::findOrFail($product);
         $product->delete();

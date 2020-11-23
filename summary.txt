@@ -988,6 +988,7 @@ IMPLEMENT THE MAIN ADMIN PANEL ACTION WITH LARAVEL
         ADVANCED FEATURE
   USING ELOQUENT GLOBAL SCOPES TO GET ONLY AVAILABLE PRODUCTS
   -global scope
+  - was was able to add a product ,only global scope
   -Deal only with available products
     https://laravel.com/docs/8.x/eloquent#global-scopes
     -scope is a class which has apply method w/c has query builder and model
@@ -999,8 +1000,24 @@ IMPLEMENT THE MAIN ADMIN PANEL ACTION WITH LARAVEL
     -In productController we need to pass our $products = Product::withoutGlobalScope(AvailableScope::class);
     -we need to get the result to our query in productController get();
     -Some little issue in product view when admin click edit 404 error appeared
+    -scope was available in admin side which is not right
 
   IGNORING THE GLOBAL SCOPES IN THE ADMIN PANEL WITH LARAVEL
+   - Resolve 404 error
+   -show the available product
+   -Model should take care of crud ,to create another model
+   -create an inheritance
+      php artisan make:model PanelProduct will extends Product
+  -once it has been extended will have capabilty to access protected and public all method
+  -we are going to inject the PanelProduct instead of Product  PanelProduct
+  -in the index we're going to usr PanelProduct::all instead of Product::withoutGlobalScope(AvailableScope::class);
+  -Add the PanelProduct to store ,edit show  update and destroy
+  -When you try to access the page  u get the following error,why laravel is trying to access the panel_table
+      SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ecommerce-portifolio.panel_products' doesn't exist (SQL: select * from `panel_products`)
+  -Solution within the PanelProduct you can add protected table protected  $table = 'products';
+  -Or you can specify in base model   w/c is Product model
+
+
 
   USE EAGER LOADING IN LARAVEL TO LOAD PRODUCT IMAGE EFFICIENTLY
 
