@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Panel;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Product;
+use App\Scopes\AvailableScope;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -24,7 +25,8 @@ class ProductController extends Controller
 
     public  function  index()
     {
-        $products = Product::all();
+        //$products = Product::all();
+        $products = Product::withoutGlobalScope(AvailableScope::class)->get();
 
         return view('products.index')->with([
             'products' => $products,
@@ -56,10 +58,11 @@ class ProductController extends Controller
         ]);
     }
 
-    public  function  edit($product)
+    public  function  edit(Product  $product)
     {
         return view('products.edit')->with([
-            'product' => Product::findOrFail($product),
+            'product' => $product
+            //'product' => Product::findOrFail($product),
         ]);
     }
 

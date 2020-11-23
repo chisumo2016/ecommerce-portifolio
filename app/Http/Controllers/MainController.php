@@ -9,7 +9,7 @@ class MainController extends Controller
 {
     public  function  index()
     {
-        $products= Product::available()->get();  //scope in product model
+        $products= Product::available()->get();  //local scope in product model
 
         return view('welcome')->with([
             'products' => $products,

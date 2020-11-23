@@ -982,7 +982,42 @@ IMPLEMENT THE MAIN ADMIN PANEL ACTION WITH LARAVEL
   -Put the condition  to check if is an admin
   -admin user can manage alot in the future
   -create a panel controller inside the panel folder
-  php artisan make:controller Panel\\PanelController
+  -php artisan make:controller Panel\\PanelController
+  -created a view to display all the products in the admin section only for authenticated user.
+
+        ADVANCED FEATURE
+  USING ELOQUENT GLOBAL SCOPES TO GET ONLY AVAILABLE PRODUCTS
+  -global scope
+  -Deal only with available products
+    https://laravel.com/docs/8.x/eloquent#global-scopes
+    -scope is a class which has apply method w/c has query builder and model
+    -We tell laravel to use a scope in booted method in our model
+    -Going to create a global scope in app folder
+    -apply a new constraints/restriction
+    -Product model must have a scope called available
+    -we need a booted method  in product model -booted called automatically with frameworks
+    -In productController we need to pass our $products = Product::withoutGlobalScope(AvailableScope::class);
+    -we need to get the result to our query in productController get();
+    -Some little issue in product view when admin click edit 404 error appeared
+
+  IGNORING THE GLOBAL SCOPES IN THE ADMIN PANEL WITH LARAVEL
+
+  USE EAGER LOADING IN LARAVEL TO LOAD PRODUCT IMAGE EFFICIENTLY
+
+  SHOWING THE LOADING IMAGES OF EACH PRODUCT WITH LARAVEL AND BOOTSTRAP
+
+  USE DATABASE TRANSACTIONS IN LARAVEL FOR COMPLEX OPERATIONS
+
+  REDIRECTING USERS TO THE CORRECT LOCATION AFTER LOGIN
+
+  CREATE YOUR OWN CONFIGURATION FILE FOR THE CART SERVICE
+
+  MANAGING THE STOCK OF PURCHASES PRODUCTS
+
+
+
+
+
 
 
 
