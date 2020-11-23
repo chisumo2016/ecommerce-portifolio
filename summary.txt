@@ -1023,11 +1023,19 @@ IMPLEMENT THE MAIN ADMIN PANEL ACTION WITH LARAVEL
   - to resolve the efficiency of our database
   -There's a problem of N+1 query , 1000 products will be 1000 + 1
   - Main Controller  on index()
-   $products = Product::with('images')->get();
+   $products = Product::with('images')->get(); This can be done in better way by moving this product model
+        protected  $with =['images' ];
+   -
   -two query , obtain the list product and second is list images  related the all list of product 27 id of products
   -ProductController $products = PanelProduct::without('images')->get();
 
   SHOWING THE LOADING IMAGES OF EACH PRODUCT WITH LARAVEL AND BOOTSTRAP
+    -we're going to show the images by using bootstrap
+    -Inside the components  in product-card  we can put carousel
+    -Every single carousel has single id
+    -loop the set of images in components
+    -add the control to show the prev and next in product-card blade
+    -The images not showing up
 
   USE DATABASE TRANSACTIONS IN LARAVEL FOR COMPLEX OPERATIONS
 
