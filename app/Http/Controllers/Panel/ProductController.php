@@ -17,7 +17,7 @@ class ProductController extends Controller
     {
         //$products = Product::all();
         //$products = Product::withoutGlobalScope(AvailableScope::class)->get();
-        $products = PanelProduct::all();
+        $products = PanelProduct::without('images')->get();
         return view('products.index')->with([
             'products' => $products,
         ]);
