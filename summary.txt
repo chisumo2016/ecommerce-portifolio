@@ -12,8 +12,6 @@ Factory : Random instance of factory, return the attributes
      -databaseSeeder
         $products = factory(Product::class, 50)->create();
 
-
-
 QUERY BUILDER
 
         //$product =DB::table('products')->where('id', $product)->get();
@@ -1038,6 +1036,22 @@ IMPLEMENT THE MAIN ADMIN PANEL ACTION WITH LARAVEL
     -The images not showing up
 
   USE DATABASE TRANSACTIONS IN LARAVEL FOR COMPLEX OPERATIONS
+   -preserve data consistency in database structure
+   -orderPaymentController or OrderPayment Controller these controllers are performing inserting data in database
+   -creating a payment associating the payment to the order
+   -Updating the order status
+   -If something fail when processing the payment ,preserve the orignal
+   -Every thing will be ignored  eg order
+    DB::transaction(function () use($request) {  //OrderController
+
+    });
+
+ -  we need to pass request DB::transaction(function () use($request)
+
+ -To be done in OrderPaymentController in the store method
+    return  DB::transaction(function () use($request,  $order){
+
+  });
 
   REDIRECTING USERS TO THE CORRECT LOCATION AFTER LOGIN
 

@@ -6,6 +6,7 @@ use App\Order;
 use App\Services\CartService;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -41,13 +42,14 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $user =  $request->user();
-        $order =$user->orders()->create([ // we use the query builder
-            'status'  => 'pending',
-        ]);
+       return  DB::transaction(function () use($request) {
+            $user =  $request->user();
+            $order =$user->orders()->create([ // we use the query builder
+                'status'  => 'pending',
+            ]);
 
-        $cart = $this->cartService->getFromCookie();
-        $cartProductsWithQuantity = $cart
+            $cart = $this->cartService->getFromCookie();
+            $cartProductsWithQuantity = $cart
                 ->products
                 ->mapwithKeys(function ($product){
                     $element[$product->id] = ['quantity' => $product->pivot->quantity] ;
@@ -55,15 +57,14 @@ class OrderController extends Controller
                     return $element;
                 });
 
-        //dd($cartProductsWithQuantity);
+            //dd($cartProductsWithQuantity);
 
-        //obtaine d the list of product and attach the order
-        $order->products()->attach($cartProductsWithQuantity->toArray());
+            //obtaine d the list of product and attach the order
+            $order->products()->attach($cartProductsWithQuantity->toArray());
 
-        //return the response
+            //return the response
 
-        return redirect()->route('orders.payments.create', ['order'=> $order->id]);
+            return redirect()->route('orders.payments.create', ['order'=> $order->id]);
+        }, 5);
     }
-
-
 }

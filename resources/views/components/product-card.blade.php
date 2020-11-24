@@ -7,6 +7,7 @@
 
             @foreach($product->images as $image)
 
+
                 <div class="carousel-item {{ $loop->first ? 'active' : ''}}">
                     <img  class="d-block w-100 card-img-top" src="{{ asset( $image->path ) }}" alt="" height="500">
 
