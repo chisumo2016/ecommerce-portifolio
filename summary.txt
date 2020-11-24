@@ -1095,8 +1095,22 @@ IMPLEMENT THE MAIN ADMIN PANEL ACTION WITH LARAVEL
      >>> date(DATE_ATOM , $cookie->getExpiresTime());
      => "1970-01-01T00:00:00+00:00"
      >>>
-     
+
   MANAGING THE STOCK OF PURCHASES PRODUCTS
+  -ProductCartController store()
+ - reduce the stock of quantity after it has been added to specific order
+ -Reduce the quantity of order once the user has added the product into the cart
+    example  2Product ->add to cart 1
+ if ($product->stock < $quantity + 1){
+     throw  validationException::withMessages([
+         'cart' => "There  is not enough stock for the quantity you required of { $product->title}"
+     ]);
+ }
+ - create the instance of illumination and message
+ - We need to the reduce the quantity of available product  in the orderController
+ -reduce the quantity available for that product
+ -Example if two user are trying to buy the same product the will get the message out of stock
+ -The product will show 0 .Mean no stock available
 
 
 
