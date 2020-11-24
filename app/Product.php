@@ -64,6 +64,4 @@ class Product extends Model
          return $this->price * $this->pivot->quantity;
     }
 
-
-
 }
