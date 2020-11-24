@@ -1146,12 +1146,20 @@ ALLOWING TO EDIT THE USER'S PROFILE WITH LARAVEL
  -View
   php artisan make:controller  ProfileController
   -Authenticated user  , access the profile
+     -created a profile edit view and copy the register file and paste
+      -Add a link in app file.
+      -add ?? $user->name  , email and remove required in password and confirmed
+      -enctype="multipart/form-data" add in the form inorder to send  the image
 
 EDITING A USER'S PROFILE WITH LARAVEL
-    -created a profile edit view and copy the register file and paste
-    -Add a link in app file.
-    -add ?? $user->name  , emai and remove required in password and confirmed
-    -enctype="multipart/form-data" add in the form inorder to send  the image
+   -validate all input
+   -we need to check the email is validated
+   -Password must be encrypted in the ProfileController or better way in User Model
+         if ($request->has('password')){
+             $user->password = bcrypt($request->password);
+         }
+ -to disable the password in the registered controller
+ -Validate our input php artisan make:request ProfileRequest
 RECEIVING AND HANDLING FILES IN LARAVEL USER'S PROFILE IMAGE
 USING AND SHOWING THE PROFILE IMAGE STORED FOR THE USER'S PROFILE
 
