@@ -22,7 +22,9 @@ Route::Resource('products.carts','ProductCartController')->only(['store','destro
 Route::Resource('orders.payments','OrderPaymentController')->only(['create','store']);
 
 
-Auth::routes();
+Auth::routes([  //Support/Facades/Auth
+    'verify' => true
+]);
 
 //Route::get('/home', 'HomeController@index')->name('home');
 

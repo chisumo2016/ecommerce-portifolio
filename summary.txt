@@ -1112,7 +1112,26 @@ IMPLEMENT THE MAIN ADMIN PANEL ACTION WITH LARAVEL
  -Example if two user are trying to buy the same product the will get the message out of stock
  -The product will show 0 .Mean no stock available
 
+HANDLING USER'S ACTIONS AND THEIR PROFILES
+VERIFYING A USER EMAIL AFTER REGISTERING
+-Sent an email after registering to user
+-Verify the email and the account
+-config  -> mail.php
+- we're going to use log file
+-set a env and example.php
+-VerificationController
+-web route
+-prepare our user model  add implements  MustVerifyEmail  (Inteface)
+-User table has the attribute email_verified_at
 
+
+
+USING ROUTE MIDDLEWARE IN LARAVEL TO ALLOW ACTIONS ONLY TO VERIFIED USERS
+HOW WORKS PASSWORD RESET FEATURES OF LARAVEL
+ALLOWING TO EDIT THE USER'S PROFILE WITH LARAVEL
+EDITING A USER'S PROFILE WITH LARAVEL
+RECEIVING AND HANDLING FILES IN LARAVEL USER'S PROFILE IMAGE
+USING AND SHOWING THE PROFILE IMAGE STORED FOR THE USER'S PROFILE
 
 
 
