@@ -9,8 +9,7 @@
 
 
                 <div class="carousel-item {{ $loop->first ? 'active' : ''}}">
-                    <img  class="d-block w-100 card-img-top" src="{{ asset( $image->path ) }}" alt="" height="500">
-
+                    <img  class="d-block w-100 card-img-top" src="{{ asset( $image->path ) }}" alt="" height="300" width="300"
                 </div>
             @endforeach
         </div>
@@ -41,7 +40,6 @@
                 <button type="submit" class="btn btn-warning">Remove From Cart</button>
             </form>
       @ELSE
-
         <form action="{{ route('products.carts.store',['product'=> $product->id]) }}" class="d-inline" method="post">
             @csrf
             <button type="submit" class="btn btn-success">Add to Cart</button>
