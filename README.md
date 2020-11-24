@@ -4,6 +4,7 @@
  An E-commerce website made with Laravel framework. It was created for varsity course project.
 
  ##Installation Process
+ 
  1: Clone the repo and cd into it
  
  2: composer install
