@@ -1116,12 +1116,17 @@ HANDLING USER'S ACTIONS AND THEIR PROFILES
 VERIFYING A USER EMAIL AFTER REGISTERING
 -Sent an email after registering to user
 -Verify the email and the account
+-VerificationController
+    -VerifiesEmails vendor/laravel/ui/auth-backend/VerifiesEmails.php
 -config  -> mail.php
 - we're going to use log file
 -set a env and example.php
 -VerificationController
--web route
+-web route routes()  v/l/frameworks/src/illuminate/Support/Facades/Auth
+                    routes.> v/lar/ui/src/UiServiceProvider.php
+                            ->v/lar/ui/src/AuthRouteMethods.php
 -prepare our user model  add implements  MustVerifyEmail  (Inteface)
+   v/l/f/src/i/Contracts/Auth/MustVerifyEmail.php
 -User table has the attribute email_verified_at
 
 

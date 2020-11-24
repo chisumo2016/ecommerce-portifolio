@@ -23,7 +23,7 @@ Route::Resource('orders.payments','OrderPaymentController')->only(['create','sto
 
 
 Auth::routes([  //Support/Facades/Auth
-    'verify' => true
+    'verify' => true,
 ]);
 
 //Route::get('/home', 'HomeController@index')->name('home');
