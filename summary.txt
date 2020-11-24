@@ -1061,9 +1061,41 @@ IMPLEMENT THE MAIN ADMIN PANEL ACTION WITH LARAVEL
    -RouteServiceProvider - public const HOME = '/home'; change this into root path '/'
    -Try to access login again 127.0.0.1:8000/login it redirect to original path
    -Check in the RedirectIfAuthenticate Middleware
-   
-  CREATE YOUR OWN CONFIGURATION FILE FOR THE CART SERVICE
 
+  CREATE YOUR OWN CONFIGURATION FILE FOR THE CART SERVICE
+   -quality of code and maintainability of my code
+       config ,env database
+   -configurable value to our application
+   -In the CartService we have cookie name and expiration time
+   -Now we need to create a file in config and call cart.php
+   -Return the an array
+   - add CART_COOKIE_NAME = cart to cart.php plus in  env and example env file
+   -In the cartService file you can add constructor which takes two  parameters
+   -Access via tinker
+     $service =  resolve(App\Services\CartService::class);
+     => App\Services\CartService {#4232}
+     >>>
+
+     🌐 >php artisan tinker
+     Psy Shell v0.10.4 (PHP 7.4.6 — cli) by Justin Hileman
+     >>> $service =  resolve(App\Services\CartService::class);
+     => App\Services\CartService {#4222}
+     >>> $cookie = $service->makeCookie(App\Cart::find(1));
+     => Symfony\Component\HttpFoundation\Cookie {#4218}
+     >>> $cookie->getName();
+     => "cart"
+     >>> $cookie->getExpiresTime();
+     => 0
+     >>> $cookie = $service->makeCookie(App\Cart::find(10));
+     => Symfony\Component\HttpFoundation\Cookie {#4236}
+     >>> $cookie->getName();
+     => "cart"
+     >>> $cookie->getExpiresTime();
+     => 0
+     >>> date(DATE_ATOM , $cookie->getExpiresTime());
+     => "1970-01-01T00:00:00+00:00"
+     >>>
+     
   MANAGING THE STOCK OF PURCHASES PRODUCTS
 
 
