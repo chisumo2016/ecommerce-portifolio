@@ -16,10 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'MainController@index')->name('main');
 
 Route::Resource('carts','CartController')->only(['index']);
-Route::Resource('orders','OrderController')->only(['create','store']);
+Route::Resource('orders','OrderController')
+    ->only(['create','store'])
+    ->middleware(['verified']);
 
 Route::Resource('products.carts','ProductCartController')->only(['store','destroy']);
-Route::Resource('orders.payments','OrderPaymentController')->only(['create','store']);
+Route::Resource('orders.payments','OrderPaymentController')
+    ->only(['create','store'])
+    ->middleware(['verified']);
 
 
 Auth::routes([  //Support/Facades/Auth

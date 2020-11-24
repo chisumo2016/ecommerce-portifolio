@@ -1129,9 +1129,15 @@ VERIFYING A USER EMAIL AFTER REGISTERING
    v/l/f/src/i/Contracts/Auth/MustVerifyEmail.php
 -User table has the attribute email_verified_at
 
-
-
 USING ROUTE MIDDLEWARE IN LARAVEL TO ALLOW ACTIONS ONLY TO VERIFIED USERS
+ -Only for verified user
+ -Apply the middleware to set some action of application
+ -RouteServiceRoute  mapPanelRoutes ->middleware(['web', 'auth' ,'is.admin','verified'])
+ -we need to restrict for ordering and paying user
+ -within the web route we can add a middleware
+      ->middleware(['verified']);
+-
+
 HOW WORKS PASSWORD RESET FEATURES OF LARAVEL
 ALLOWING TO EDIT THE USER'S PROFILE WITH LARAVEL
 EDITING A USER'S PROFILE WITH LARAVEL
