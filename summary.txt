@@ -1167,8 +1167,29 @@ RECEIVING AND HANDLING FILES IN LARAVEL USER'S PROFILE IMAGE
   file upload via laravel
 -File Storage in filesystem file laravel
 -STORE in local
--removing the existing image and create a new one in profilecontroller
+-removing the existing image and create a new image  in profilecontroller
+
 USING AND SHOWING THE PROFILE IMAGE STORED FOR THE USER'S PROFILE
+ -Show the image in user interface UI
+ -Show the image associated with the User
+ -on profile
+ -Modify the app
+ -the image of the user who has been authenticated
+ Trying to get property 'path' of non-object ERROR
+     <img src="{{ asset('images/' . Auth::user()->image->path) }}"
+     WHAT HAPPEN IF THE USER DOESN'T HAVE AN IMAGE?
+     The above code will cause alot of problem ,the better way
+      OR
+    src="{{ asset(Auth::user()->profile_image) }}"
+
+    we need to create an attribute from the User model to get an assessor
+     public  function  getProfileImageAttribute()
+         {
+             return $this->image ?
+                 "/images/{ $this->image->path}"
+                 : 'https://www.gravatar.com/avatar/404?d=mp';
+             //return "images/{$this->image->path}";
+         }
 
 
 

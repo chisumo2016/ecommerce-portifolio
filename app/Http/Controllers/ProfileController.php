@@ -34,7 +34,7 @@ class ProfileController extends Controller
          $user->save();
 
          if ($request->hasFile('image')){ //field called image
-             //removing 
+             //removing
              if ($user->image != null){
                  Storage::disk('images')->delete($user->image->path);
                  $user->image->delete();
