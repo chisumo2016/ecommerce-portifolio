@@ -1160,7 +1160,14 @@ EDITING A USER'S PROFILE WITH LARAVEL
          }
  -to disable the password in the registered controller
  -Validate our input php artisan make:request ProfileRequest
+ -Pass the request in the ProfileController
+
 RECEIVING AND HANDLING FILES IN LARAVEL USER'S PROFILE IMAGE
+ -Detach and store the new one
+  file upload via laravel
+-File Storage in filesystem file laravel
+-STORE in local
+-removing the existing image and create a new one in profilecontroller
 USING AND SHOWING THE PROFILE IMAGE STORED FOR THE USER'S PROFILE
 
 
