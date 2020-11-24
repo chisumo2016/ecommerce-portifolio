@@ -24,7 +24,7 @@ Route::Resource('orders.payments','OrderPaymentController')->only(['create','sto
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 
 

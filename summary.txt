@@ -1054,7 +1054,14 @@ IMPLEMENT THE MAIN ADMIN PANEL ACTION WITH LARAVEL
   });
 
   REDIRECTING USERS TO THE CORRECT LOCATION AFTER LOGIN
-
+    -remove the home route in web
+    -we need to the change the location after the user has login or register or
+        an incorrect location
+   LoginController
+   -RouteServiceProvider - public const HOME = '/home'; change this into root path '/'
+   -Try to access login again 127.0.0.1:8000/login it redirect to original path
+   -Check in the RedirectIfAuthenticate Middleware
+   
   CREATE YOUR OWN CONFIGURATION FILE FOR THE CART SERVICE
 
   MANAGING THE STOCK OF PURCHASES PRODUCTS
