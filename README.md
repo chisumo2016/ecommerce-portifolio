@@ -1,4 +1,4 @@
- ![Screenshot](Ecommerce Project.png)
+ <img width="1440" alt="Ecommerce Project" src="https://user-images.githubusercontent.com/9254656/100145865-e362bf80-2e90-11eb-9c12-9d2b31042f4c.png">
 
 ## Shopping Cart Application 
  An E-commerce website made with Laravel framework. It was created for varsity course project.
