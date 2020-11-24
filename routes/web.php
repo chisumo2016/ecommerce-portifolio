@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'MainController@index')->name('main');
 
+Route::get('profile','ProfileController@edit')->name('profile.edit');
+Route::put('profile','ProfileController@update')->name('profile.update');
+
 Route::Resource('carts','CartController')->only(['index']);
 Route::Resource('orders','OrderController')
     ->only(['create','store'])
@@ -28,6 +31,7 @@ Route::Resource('orders.payments','OrderPaymentController')
 
 Auth::routes([  //Support/Facades/Auth
     'verify' => true,
+    //'reset' => true,
 ]);
 
 //Route::get('/home', 'HomeController@index')->name('home');

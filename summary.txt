@@ -1139,8 +1139,19 @@ USING ROUTE MIDDLEWARE IN LARAVEL TO ALLOW ACTIONS ONLY TO VERIFIED USERS
 -
 
 HOW WORKS PASSWORD RESET FEATURES OF LARAVEL
+  recover the forgotten passwod from the user
 ALLOWING TO EDIT THE USER'S PROFILE WITH LARAVEL
+ -route
+ -controller
+ -View
+  php artisan make:controller  ProfileController
+  -Authenticated user  , access the profile
+
 EDITING A USER'S PROFILE WITH LARAVEL
+    -created a profile edit view and copy the register file and paste
+    -Add a link in app file.
+    -add ?? $user->name  , emai and remove required in password and confirmed
+    -enctype="multipart/form-data" add in the form inorder to send  the image
 RECEIVING AND HANDLING FILES IN LARAVEL USER'S PROFILE IMAGE
 USING AND SHOWING THE PROFILE IMAGE STORED FOR THE USER'S PROFILE
 
